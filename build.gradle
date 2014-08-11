@@ -33,8 +33,8 @@ dependencies {
 	testCompile "org.gebish:geb-core:$gebVersion"
 	testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion"
 
-	cucumberCompile "info.cukes:cucumber-core:$cucumberJvmVersion"
-	cucumberCompile "info.cukes:cucumber-groovy:$cucumberJvmVersion"
+	testCompile "info.cukes:cucumber-core:$cucumberJvmVersion"
+	testCompile "info.cukes:cucumber-groovy:$cucumberJvmVersion"
 
 	// pick whichever drivers you want. We test against most of them here.
 	// see src/test/resources/GebConfig.groovy for how to switch between them
