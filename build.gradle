@@ -36,6 +36,10 @@ dependencies {
 	testCompile "info.cukes:cucumber-core:$cucumberJvmVersion"
 	testCompile "info.cukes:cucumber-groovy:$cucumberJvmVersion"
 
+	// this supplies some pre-built cucumber steps for driving Geb,
+	// see https://github.com/tomdcc/geb-cucumber
+	testCompile "io.jdev.geb:geb-cucumber:0.2"
+
 	// pick whichever drivers you want. We test against most of them here.
 	// see src/test/resources/GebConfig.groovy for how to switch between them
 	cucumberRuntime "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
@@ -52,5 +56,9 @@ cucumber {
 		'pretty', // prints nice format out to the console
 		'html:build/reports/cucumber', // html
 		'junit:build/cucumber.xml' // junit format for integration with CI tool etc
+	]
+	// src/cucumber/resources is included automatically
+	glueDirs = [
+		"classpath:io.jdev.geb.cucumber.steps.groovy.en"
 	]
 }

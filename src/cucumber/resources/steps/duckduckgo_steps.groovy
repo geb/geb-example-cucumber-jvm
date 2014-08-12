@@ -12,7 +12,7 @@ Given(~/I am on the DuckDuckGo search page/) { ->
 }
 
 When(~/I search for "(.*)"/) { String query ->
-	page.searchField.value(query)
+	page.search.value(query)
 	page.searchButton.click()
 }
 
@@ -20,7 +20,7 @@ Then(~/I can see some results/) { ->
 	assert at(DuckDuckGoResultsPage)
 }
 
-Then(~/The first link should be "(.*)"/) { String text ->
+Then(~/the first link should be "(.*)"/) { String text ->
 	waitFor { page.results }
 	assert page.resultLink(0).text()?.contains(text)
 }

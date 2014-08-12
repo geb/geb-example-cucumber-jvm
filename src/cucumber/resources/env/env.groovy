@@ -13,6 +13,7 @@ import geb.binding.BindingUpdater
 def bindingUpdater
 def theBrowser = null
 Before() { scenario ->
+	System.setProperty("geb.cucumber.step.packages", "pages")
 	if(!binding.hasVariable('browser')) {
 		theBrowser = new Browser()
 		bindingUpdater = new BindingUpdater(binding, theBrowser)

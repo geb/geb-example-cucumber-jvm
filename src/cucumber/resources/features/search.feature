@@ -10,4 +10,4 @@ Feature: Search
     Given I am on the DuckDuckGo search page
     When I search for "cucumber-jvm github"
     Then I can see some results
-    And The first link should be "cucumber/cucumber-jvm · GitHub"
+    And the first link should be "cucumber/cucumber-jvm · GitHub"
