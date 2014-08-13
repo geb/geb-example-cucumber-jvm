@@ -4,18 +4,13 @@
 	See: http://www.gebish.org/manual/current/configuration.html
 */
 
-import org.openqa.selenium.htmlunit.HtmlUnitDriver
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.phantomjs.PhantomJSDriver
 
-// Use htmlunit as the default
-// See: http://code.google.com/p/selenium/wiki/HtmlUnitDriver
-driver = { 
-	def driver = new HtmlUnitDriver()
-	driver.javascriptEnabled = true
-	driver
-}
+// Use firefox as the default
+// See: http://code.google.com/p/selenium/wiki/FirefoxDriver
+driver = { new FirefoxDriver() }
 
 environments {
 	
@@ -25,12 +20,6 @@ environments {
 		driver = { new ChromeDriver() }
 	}
 	
-	// run as “gradle -Dgeb.env=firefox cucumber”
-	// See: http://code.google.com/p/selenium/wiki/FirefoxDriver
-	firefox {
-		driver = { new FirefoxDriver() }
-	}
-
 	// run as “gradle -Dgeb.env=phantomjs cucumber”
 	// See: https://github.com/detro/ghostdriver
 	phantomjs {
