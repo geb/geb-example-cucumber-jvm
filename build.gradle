@@ -86,19 +86,21 @@ task unzipChromeDriver(type: Copy) {
 }
 
 task downloadPhantomJs {
-    def outputFile = file("gradle/webdriver/phantomjs.zip")
+    def osFilenamePart
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        osFilenamePart = "windows.zip"
+    } else if (Os.isFamily(Os.FAMILY_MAC)) {
+        osFilenamePart = "macosx.zip"
+    } else if (Os.isFamily(Os.FAMILY_UNIX)) {
+        osFilenamePart = Os.isArch("amd64") ? "linux-x86_64.tar.bz2" : "linux-i686.tar.bz2"
+    }
+
+    def filename = "phantomjs-1.9.7-$osFilenamePart"
+    def outputFile = file("gradle/webdriver/$filename")
     outputs.file(outputFile)
 
     doLast {
-        def osFilenamePart
-        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-            osFilenamePart = "windows.zip"
-        } else if (Os.isFamily(Os.FAMILY_MAC)) {
-            osFilenamePart = "macosx.zip"
-        } else if (Os.isFamily(Os.FAMILY_UNIX)) {
-            osFilenamePart = Os.isArch("amd64") ? "linux-x86_64.tar.bz2" : "linux-i686.tar.bz2"
-        }
-        FileUtils.copyURLToFile(new URL("https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.7-${osFilenamePart}"), outputFile)
+        FileUtils.copyURLToFile(new URL("https://bitbucket.org/ariya/phantomjs/downloads/$filename"), outputFile)
     }
 
 }
