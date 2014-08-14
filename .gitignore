@@ -13,3 +13,5 @@ bin/
 .classpath
 .settings/
 out/
+
+gradle/webdriver
