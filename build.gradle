@@ -12,9 +12,10 @@ buildscript {
 	}
 }
 
-apply plugin: 'java'
-apply plugin: 'groovy'
-apply plugin: 'idea'
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "idea"
+apply from: "gradle/idea.gradle"
 apply plugin: "com.github.samueltbrown.cucumber"
 
 repositories {
