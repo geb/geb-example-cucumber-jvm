@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/geb/geb-example-cucumber-jvm/status.png)](https://drone.io/github.com/geb/geb-example-cucumber-jvm/latest)
+
 This is an example project for using [Geb](http://geb.codehaus.org/ "Geb - Groovy Browser Automation")
 with the [Cucumber-JVM](http://cukes.info/install-cucumber-jvm.html "Cucumber JVM") testing framework.
 
