@@ -27,3 +27,5 @@ environments {
 	}
 
 }
+
+baseUrl = "http://gebish.org"
