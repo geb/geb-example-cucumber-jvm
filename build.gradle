@@ -1,5 +1,4 @@
 import org.apache.tools.ant.taskdefs.condition.Os
-import org.apache.commons.io.FileUtils
 
 buildscript {
 	repositories {
@@ -11,8 +10,6 @@ buildscript {
 		// if you use the version of cucumber-jvm that the plugin was built with
 		// (1.1.6 for version 0.7), the line below is unnecessary
 		classpath "info.cukes:cucumber-core:1.1.8"
-
-		classpath "commons-io:commons-io:2.4"
 	}
 }
 
@@ -31,6 +28,7 @@ apply plugin: "com.github.samueltbrown.cucumber"
 
 apply from: "gradle/idea/idea.gradle"
 apply from: "gradle/ci.gradle"
+apply from: "gradle/osSpecificDownloads.gradle"
 
 repositories {
 	jcenter()
@@ -55,65 +53,6 @@ dependencies {
 	cucumberRuntime("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
 		// phantomjs driver pulls in a different selenium version
 		transitive = false
-	}
-}
-
-task downloadChromeDriver {
-	def outputFile = file("gradle/webdriver/chromedriver.zip")
-	outputs.file(outputFile)
-
-	doLast {
-		def driverOsFilenamePart
-		if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-			driverOsFilenamePart = "win32"
-		} else if (Os.isFamily(Os.FAMILY_MAC)) {
-			driverOsFilenamePart = "mac32"
-		} else if (Os.isFamily(Os.FAMILY_UNIX)) {
-			driverOsFilenamePart = Os.isArch("amd64") ? "linux64" : "linux32"
-		}
-		FileUtils.copyURLToFile(new URL("http://chromedriver.storage.googleapis.com/${chromeDriverVersion}/chromedriver_${driverOsFilenamePart}.zip"), outputFile)
-	}
-}
-
-task unzipChromeDriver(type: Copy) {
-	def outputDir = file("gradle/webdriver/chromedriver")
-	dependsOn downloadChromeDriver
-	outputs.dir(outputDir)
-
-	from(zipTree(downloadChromeDriver.outputs.files.singleFile))
-	into(outputDir)
-}
-
-task downloadPhantomJs {
-	def osFilenamePart
-	if (Os.isFamily(Os.FAMILY_WINDOWS)) {
-		osFilenamePart = "windows.zip"
-	} else if (Os.isFamily(Os.FAMILY_MAC)) {
-		osFilenamePart = "macosx.zip"
-	} else if (Os.isFamily(Os.FAMILY_UNIX)) {
-		osFilenamePart = Os.isArch("amd64") ? "linux-x86_64.tar.bz2" : "linux-i686.tar.bz2"
-	}
-
-	def filename = "phantomjs-$phantomJsVersion-$osFilenamePart"
-	def outputFile = file("gradle/webdriver/$filename")
-	outputs.file(outputFile)
-
-	doLast {
-		FileUtils.copyURLToFile(new URL("https://bitbucket.org/ariya/phantomjs/downloads/$filename"), outputFile)
-	}
-}
-
-task unzipPhantomJs(type: Copy) {
-	def outputDir = file("gradle/webdriver/phantomjs")
-	dependsOn downloadPhantomJs
-	outputs.dir(outputDir)
-
-	def archive = downloadPhantomJs.outputs.files.singleFile
-
-	from(Os.isFamily(Os.FAMILY_MAC) || Os.isFamily(Os.FAMILY_WINDOWS) ? zipTree(archive) : tarTree(archive))
-	into(outputDir)
-	eachFile { FileCopyDetails fcp ->
-		fcp.relativePath = new RelativePath(!fcp.directory, *fcp.relativePath.segments[1..-1])
 	}
 }
 
