@@ -19,4 +19,4 @@ See the `src/test/resources/GebConfig.groovy` file for how to run the tests with
 
 # Questions and issues
 
-Please ask questions on [Geb user mailing list](http://xircles.codehaus.org/projects/geb/lists) and raise issues in [Geb issue tracker](https://jira.codehaus.org/browse/GEB).
+Please ask questions on [Geb user mailing list](http://xircles.codehaus.org/lists/user@geb.codehaus.org) and raise issues in [Geb issue tracker](https://jira.codehaus.org/browse/GEB).
