@@ -22,7 +22,6 @@ ext {
 	phantomJsVersion = '1.9.7'
 }
 
-apply plugin: "java"
 apply plugin: "groovy"
 apply plugin: "com.github.samueltbrown.cucumber"
 
