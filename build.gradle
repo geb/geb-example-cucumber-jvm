@@ -16,21 +16,24 @@ buildscript {
 	}
 }
 
-apply plugin: "java"
-apply plugin: "groovy"
-apply from: "gradle/idea/idea.gradle"
-apply from: "gradle/ci.gradle"
-apply plugin: "com.github.samueltbrown.cucumber"
-
-repositories {
-	jcenter()
-}
-
 ext {
 	groovyVersion = '2.3.6'
 	gebVersion = '0.9.3'
 	seleniumVersion = '2.42.2'
 	cucumberJvmVersion = '1.1.8'
+	chromeDriverVersion = '2.10'
+	phantomJsVersion = '1.9.7'
+}
+
+apply plugin: "java"
+apply plugin: "groovy"
+apply plugin: "com.github.samueltbrown.cucumber"
+
+apply from: "gradle/idea/idea.gradle"
+apply from: "gradle/ci.gradle"
+
+repositories {
+	jcenter()
 }
 
 dependencies {
@@ -56,9 +59,6 @@ dependencies {
 }
 
 task downloadChromeDriver {
-	ext {
-		chromeDriverVersion = "2.10"
-	}
 	def outputFile = file("gradle/webdriver/chromedriver.zip")
 	outputs.file(outputFile)
 
@@ -94,7 +94,7 @@ task downloadPhantomJs {
 		osFilenamePart = Os.isArch("amd64") ? "linux-x86_64.tar.bz2" : "linux-i686.tar.bz2"
 	}
 
-	def filename = "phantomjs-1.9.7-$osFilenamePart"
+	def filename = "phantomjs-$phantomJsVersion-$osFilenamePart"
 	def outputFile = file("gradle/webdriver/$filename")
 	outputs.file(outputFile)
 
