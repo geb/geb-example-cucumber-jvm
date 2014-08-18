@@ -13,7 +13,7 @@ The project is using the [Gradle wrapper](http://www.gradle.org/docs/current/use
 so if you don't need to have Gradle installed if you execute the appropriate script in the project directory
 and Gradle will be downloaded for you.
 
-To run the tests, just run `./gradle cucumber` on *nix or `gradlew.bat cucumber` on Windows.
+To run the tests, just run `./gradlew cucumber` on *nix or `gradlew.bat cucumber` on Windows.
 
 See the `src/test/resources/GebConfig.groovy` file for how to run the tests with different browsers.
 
