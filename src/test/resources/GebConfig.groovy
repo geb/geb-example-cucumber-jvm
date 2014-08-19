@@ -29,3 +29,5 @@ environments {
 }
 
 baseUrl = "http://gebish.org"
+
+baseNavigatorWaiting = true
