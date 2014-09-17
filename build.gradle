@@ -5,7 +5,7 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.7"
+		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.7.2"
 
 		// if you use the version of cucumber-jvm that the plugin was built with
 		// (1.1.6 for version 0.7), the line below is unnecessary
@@ -16,7 +16,7 @@ buildscript {
 ext {
 	groovyVersion = '2.3.6'
 	gebVersion = '0.9.3'
-	seleniumVersion = '2.42.2'
+	seleniumVersion = '2.43.1'
 	cucumberJvmVersion = '1.1.8'
 	chromeDriverVersion = '2.10'
 	phantomJsVersion = '1.9.7'
