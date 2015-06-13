@@ -17,9 +17,9 @@ ext {
 	groovyVersion = '2.4.3'
 	gebVersion = '0.10.0'
 	seleniumVersion = '2.46.0'
-	cucumberJvmVersion = '1.2.0' // Version 1.2.2 causes errors
+	cucumberJvmVersion = '1.2.0'
 	chromeDriverVersion = '2.15'
-	phantomJsVersion = '2.0.0'
+	phantomJsVersion = '1.9.7'
 }
 
 apply plugin: "groovy"
@@ -49,7 +49,8 @@ dependencies {
 	// see src/test/resources/GebConfig.groovy for how to switch between them
 	cucumberRuntime "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
 	cucumberRuntime "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
-	cucumberRuntime("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
+	// using a custom version of phantomjs driver for now as the original one does not support WebDriver > 2.43.1
+	cucumberRuntime("com.codeborne:phantomjsdriver:1.2.1") {
 		// phantomjs driver pulls in a different selenium version
 		transitive = false
 	}
