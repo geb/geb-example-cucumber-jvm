@@ -5,11 +5,10 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.7.2"
+		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
 
 		// if you use the version of cucumber-jvm that the plugin was built with
-		// (1.1.6 for version 0.7), the line below is unnecessary
-		classpath "info.cukes:cucumber-core:1.1.8"
+		classpath "info.cukes:cucumber-core:1.2.2"
 	}
 }
 
@@ -17,7 +16,7 @@ ext {
 	groovyVersion = '2.4.3'
 	gebVersion = '0.10.0'
 	seleniumVersion = '2.46.0'
-	cucumberJvmVersion = '1.2.0'
+	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.15'
 	phantomJsVersion = '1.9.7'
 }
@@ -71,10 +70,13 @@ cucumber {
 tasks.cucumber {
 	dependsOn unzipChromeDriver, unzipPhantomJs
 
-	doFirst {
-		def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
-		System.setProperty("webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath)
-		def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
-		System.setProperty("phantomjs.binary.path", new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath)
-	}
+	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
+	def phantomJsFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "phantomjs.exe" : "bin/phantomjs"
+
+	jvmOptions.systemProperties([
+		"webdriver.chrome.driver": new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath,
+		"phantomjs.binary.path": new File(unzipPhantomJs.outputs.files.singleFile, phantomJsFilename).absolutePath,
+		"geb.cucumber.step.packages": "pages",
+		"geb.env": System.getProperty("geb.env")
+	])
 }
