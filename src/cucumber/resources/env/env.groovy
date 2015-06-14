@@ -3,16 +3,29 @@ import org.openqa.selenium.WebDriverException
 
 import static cucumber.api.groovy.Hooks.*
 
-// NOTE: if you are using the steps in the geb-cucumber library, binding and unbinding
-// will already be taken care of for you, otherwise you have to do it yourself in this file
+import geb.Browser
+import geb.binding.BindingUpdater
 
-def theBrowser = null
+// NOTE: if you are using the steps in the geb-cucumber library, binding and unbinding
+// will already be taken care of for you
+
+def bindingUpdater
+def theBrowser
+
 Before { scenario ->
-	// save for later screenshot taking
-	theBrowser = browser
+	if(!binding.hasVariable('browser')) {
+		theBrowser = new Browser()
+		bindingUpdater = new BindingUpdater(binding, theBrowser)
+		bindingUpdater.initialize()
+	} else {
+		// save for later screenshot taking
+		theBrowser = browser
+	}
 }
 
 After { scenario ->
+	bindingUpdater?.remove()
+
 	// embed screenshot into cucumber report
 	if(scenario.failed) {
 		try {
@@ -23,4 +36,5 @@ After { scenario ->
 			// HTMLUnit doesn't support screenshots
 		}
 	}
+
 }
