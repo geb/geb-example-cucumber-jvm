@@ -42,7 +42,7 @@ dependencies {
 
 	// this supplies some pre-built cucumber steps for driving Geb,
 	// see https://github.com/tomdcc/geb-cucumber
-	testCompile "io.jdev.geb:geb-cucumber:0.2"
+	testCompile "io.jdev.geb:geb-cucumber:0.3"
 
 	// pick whichever drivers you want. We test against most of them here.
 	// see src/test/resources/GebConfig.groovy for how to switch between them
