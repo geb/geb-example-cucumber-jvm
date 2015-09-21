@@ -25,7 +25,6 @@ apply plugin: "groovy"
 apply plugin: "com.github.samueltbrown.cucumber"
 
 apply from: "gradle/idea/idea.gradle"
-apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 
 repositories {
@@ -80,3 +79,5 @@ tasks.cucumber {
 		"geb.env": System.getProperty("geb.env")
 	])
 }
+
+apply from: "gradle/ci.gradle"
