@@ -14,7 +14,7 @@ buildscript {
 
 ext {
 	groovyVersion = '2.4.3'
-	gebVersion = '+'
+	gebVersion = '0.12.2'
 	seleniumVersion = '2.47.1'
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.15'
@@ -27,14 +27,7 @@ apply plugin: "com.github.samueltbrown.cucumber"
 apply from: "gradle/idea/idea.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 
-configurations.all {
-	resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
-}
-
 repositories {
-	maven {
-		url "https://oss.sonatype.org/content/repositories/snapshots/"
-	}
 	mavenCentral()
 }
 
