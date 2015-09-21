@@ -1,4 +1,4 @@
-[![Build Status](https://drone.io/github.com/geb/geb-example-cucumber-jvm/status.png)](https://drone.io/github.com/geb/geb-example-cucumber-jvm/latest)
+[![Build Status](https://snap-ci.com/geb/geb-example-cucumber-jvm/branch/master/build_image)](https://snap-ci.com/geb/geb-example-cucumber-jvm/branch/master)
 
 # Description
 
