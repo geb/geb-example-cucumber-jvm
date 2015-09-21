@@ -15,7 +15,7 @@ buildscript {
 ext {
 	groovyVersion = '2.4.3'
 	gebVersion = '0.12.2'
-	seleniumVersion = '2.46.0'
+	seleniumVersion = '2.47.1'
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.15'
 	phantomJsVersion = '1.9.7'
