@@ -13,12 +13,12 @@ buildscript {
 }
 
 ext {
-	groovyVersion = '2.4.3'
+	groovyVersion = '2.4.4'
 	gebVersion = '0.12.2'
-	seleniumVersion = '2.47.1'
+	seleniumVersion = '2.47.2'
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.15'
-	phantomJsVersion = '1.9.7'
+	phantomJsVersion = '1.9.8'
 }
 
 apply plugin: "groovy"
