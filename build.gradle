@@ -17,8 +17,10 @@ ext {
 	gebVersion = '0.12.2'
 	seleniumVersion = '2.47.2'
 	cucumberJvmVersion = '1.2.2'
-	chromeDriverVersion = '2.15'
+	chromeDriverVersion = '2.19'
 	phantomJsVersion = '1.9.8'
+
+	ciBuild = System.getenv('SNAP_CI')
 }
 
 apply plugin: "groovy"
