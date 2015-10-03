@@ -19,6 +19,8 @@ ext {
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.19'
 	phantomJsVersion = '1.9.8'
+
+	ciBuild = System.getenv('SNAP_CI')
 }
 
 apply plugin: "groovy"
