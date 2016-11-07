@@ -17,7 +17,7 @@ ext {
 	gebVersion = '1.0'
 	seleniumVersion = '2.51.0'
 	cucumberJvmVersion = '1.2.2'
-	chromeDriverVersion = '2.19'
+	chromeDriverVersion = '2.24'
 	phantomJsVersion = '1.9.8'
 
 	ciBuild = System.getenv('SNAP_CI')
