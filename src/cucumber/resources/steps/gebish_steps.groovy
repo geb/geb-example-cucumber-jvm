@@ -14,7 +14,11 @@ Then(~/the first heading on the page is '(.*)'/) { String expectedHeading ->
 	assert page.headings[0].text() == expectedHeading
 }
 
-When(~/the link to the cross browser page is clicked/) { ->
-	page.crossBrowserLink.click()
+When(~/the link to documentation is clicked/) { ->
+	page.documentationLink.click()
+}
+
+Then(~/I end up at The Book of Geb/) { ->
+	at BookOfGebPage
 }
 
