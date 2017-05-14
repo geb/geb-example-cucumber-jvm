@@ -1,6 +1,6 @@
 # Example Geb and Cucmber JVM Project
 
-[![Build Status][build_status]](https://snap-ci.com/geb/geb-example-cucumber-jvm/branch/master)
+[![Build Status][build_status]](https://gitlab.com/gebish/geb-example-cucumber-jvm/pipelines)
 
 ### Description
 
@@ -23,6 +23,6 @@ See the `src/test/resources/GebConfig.groovy` file for how to run the tests with
 
 Please ask questions on [Geb user mailing list][mailing_list] and raise issues in [Geb issue tracker][issue_tracker].
 
-[build_status]: https://snap-ci.com/geb/geb-example-cucumber-jvm/branch/master/build_image "Build Status"
+[build_status]: https://gitlab.com/gebish/geb-example-cucumber-jvm/badges/master/build.svg "Build Status"
 [mailing_list]: https://groups.google.com/forum/#!forum/geb-user
 [issue_tracker]: https://github.com/geb/issues/issues
