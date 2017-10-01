@@ -18,5 +18,6 @@ cucumber:
   script:
     - Xvfb :99 -screen 1 1280x1024x16 -nolisten tcp -fbdir /var/run > /dev/null 2>&1 &
     - export DISPLAY=:99
+    - export FIREFOX_VERSION=53.0.3
     - ./gradlew cucumber
     - ./gradlew cucumber -Dgeb.env=chrome
