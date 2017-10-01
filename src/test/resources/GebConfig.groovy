@@ -25,3 +25,4 @@ environments {
 baseUrl = "http://gebish.org"
 
 baseNavigatorWaiting = true
+atCheckWaiting = true
