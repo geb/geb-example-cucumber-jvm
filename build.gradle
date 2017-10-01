@@ -14,6 +14,8 @@ plugins {
 	id "groovy"
 	id "idea"
 	id "com.github.samueltbrown.cucumber" version "0.8"
+	id "com.energizedwork.idea-project-components" version "1.2"
+	id "com.energizedwork.idea-base" version "1.2"
 }
 
 ext {
@@ -24,7 +26,6 @@ ext {
 	chromeDriverVersion = '2.24'
 }
 
-apply from: "gradle/idea/idea.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 
 repositories {
@@ -82,4 +83,8 @@ tasks.cucumber {
 		"geb.cucumber.step.packages": "pages",
 		"geb.env": System.getProperty("geb.env")
 	])
+}
+
+ideaProjectComponents {
+	file "gradle/idea/ideaCodeStyle.xml"
 }
