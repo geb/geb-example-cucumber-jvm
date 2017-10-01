@@ -19,8 +19,6 @@ ext {
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.24'
 	phantomJsVersion = '1.9.8'
-
-	ciBuild = System.getenv('SNAP_CI')
 }
 
 apply plugin: "groovy"
@@ -92,5 +90,3 @@ tasks.cucumber {
 		"geb.env": System.getProperty("geb.env")
 	])
 }
-
-apply from: "gradle/ci.gradle"

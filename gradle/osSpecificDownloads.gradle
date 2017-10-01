@@ -11,8 +11,6 @@ buildscript {
 }
 
 task downloadChromeDriver {
-	enabled = !ciBuild
-
 	def outputFile = file("$buildDir/webdriver/chromedriver.zip")
 	inputs.property("chromeDriverVersion", chromeDriverVersion)
 	outputs.file(outputFile)
@@ -31,8 +29,6 @@ task downloadChromeDriver {
 }
 
 task unzipChromeDriver(type: Copy) {
-	enabled = !ciBuild
-
 	def outputDir = file("$buildDir/webdriver/chromedriver")
 	dependsOn downloadChromeDriver
 	outputs.dir(outputDir)
