@@ -1,5 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.Os
-
 buildscript {
 	repositories {
 		jcenter()
@@ -16,17 +14,17 @@ plugins {
 	id "com.github.samueltbrown.cucumber" version "0.8"
 	id "com.energizedwork.idea-project-components" version "1.2"
 	id "com.energizedwork.idea-base" version "1.2"
+	id "com.energizedwork.webdriver-binaries" version "1.0"
 }
 
 ext {
 	groovyVersion = '2.4.5'
 	gebVersion = '+'
-	seleniumVersion = '2.51.0'
+	seleniumVersion = '3.6.0'
 	cucumberJvmVersion = '1.2.2'
-	chromeDriverVersion = '2.24'
+	chromeDriverVersion = '2.32'
+	geckoDriverVersion = '0.18.0'
 }
-
-apply from: "gradle/osSpecificDownloads.gradle"
 
 repositories {
 	mavenCentral()
@@ -61,6 +59,11 @@ dependencies {
 	cucumberRuntime "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
 }
 
+webdriverBinaries {
+	chromedriver chromeDriverVersion
+	geckodriver geckoDriverVersion
+}
+
 cucumber {
 	formats = [
 		'pretty', // prints nice format out to the console
@@ -73,13 +76,21 @@ cucumber {
 	]
 }
 
+configureChromeDriverBinary {
+	addBinaryAware { path ->
+		tasks.cucumber.jvmOptions.systemProperties("webdriver.chrome.driver": path)
+	}
+}
+
+configureGeckoDriverBinary {
+	addBinaryAware { path ->
+		tasks.cucumber.jvmOptions.systemProperties("webdriver.gecko.driver": path)
+	}
+}
+
 tasks.cucumber {
-	dependsOn unzipChromeDriver
-
-	def chromeDriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
-
+	dependsOn configureChromeDriverBinary, configureGeckoDriverBinary
 	jvmOptions.systemProperties([
-		"webdriver.chrome.driver": new File(unzipChromeDriver.outputs.files.singleFile, chromeDriverFilename).absolutePath,
 		"geb.cucumber.step.packages": "pages",
 		"geb.env": System.getProperty("geb.env")
 	])
