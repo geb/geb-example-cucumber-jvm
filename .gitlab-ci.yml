@@ -20,4 +20,3 @@ cucumber:
     - export DISPLAY=:99
     - ./gradlew cucumber
     - ./gradlew cucumber -Dgeb.env=chrome
-    - ./gradlew cucumber -Dgeb.env=phantomjs
