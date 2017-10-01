@@ -5,11 +5,15 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.github.samueltbrown:gradle-cucumber-plugin:0.8"
-
 		// if you use the version of cucumber-jvm that the plugin was built with
 		classpath "info.cukes:cucumber-core:1.2.2"
 	}
+}
+
+plugins {
+	id "groovy"
+	id "idea"
+	id "com.github.samueltbrown.cucumber" version "0.8"
 }
 
 ext {
@@ -19,9 +23,6 @@ ext {
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.24'
 }
-
-apply plugin: "groovy"
-apply plugin: "com.github.samueltbrown.cucumber"
 
 apply from: "gradle/idea/idea.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
