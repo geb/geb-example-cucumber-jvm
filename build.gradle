@@ -18,7 +18,7 @@ plugins {
 }
 
 ext {
-	groovyVersion = '2.4.5'
+	groovyVersion = '2.4.12'
 	gebVersion = '+'
 	seleniumVersion = '3.6.0'
 	cucumberJvmVersion = '1.2.2'
