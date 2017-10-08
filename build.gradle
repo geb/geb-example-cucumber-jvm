@@ -85,6 +85,10 @@ tasks.cucumber {
 	])
 }
 
+tasks.withType(GroovyCompile) {
+	groovyOptions.forkOptions.memoryMaximumSize = '256m'
+}
+
 ideaProjectComponents {
 	file "gradle/idea/ideaCodeStyle.xml"
 }
