@@ -19,7 +19,7 @@ plugins {
 
 ext {
 	groovyVersion = '2.4.12'
-	gebVersion = '2.0'
+	gebVersion = '2.1'
 	seleniumVersion = '3.6.0'
 	cucumberJvmVersion = '1.2.2'
 	chromeDriverVersion = '2.32'
