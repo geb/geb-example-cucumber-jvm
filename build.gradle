@@ -4,26 +4,26 @@ buildscript {
 	}
 	dependencies {
 		// if you use the version of cucumber-jvm that the plugin was built with
-		classpath "info.cukes:cucumber-core:1.2.2"
+		classpath "info.cukes:cucumber-core:1.2.5"
 	}
 }
 
 plugins {
 	id "groovy"
 	id "idea"
-	id "com.github.samueltbrown.cucumber" version "0.8"
-	id "com.energizedwork.idea-project-components" version "1.2"
-	id "com.energizedwork.idea-base" version "1.2"
-	id "com.energizedwork.webdriver-binaries" version "1.0"
+	id "com.github.samueltbrown.cucumber" version "0.9"
+	id "com.energizedwork.idea-project-components" version "1.4"
+	id "com.energizedwork.idea-base" version "1.4"
+	id "com.energizedwork.webdriver-binaries" version "1.4"
 }
 
 ext {
-	groovyVersion = '2.4.12'
-	gebVersion = '2.1'
-	seleniumVersion = '3.6.0'
-	cucumberJvmVersion = '1.2.2'
-	chromeDriverVersion = '2.32'
-	geckoDriverVersion = '0.18.0'
+	groovyVersion = '2.4.16'
+	gebVersion = '2.3.1'
+	seleniumVersion = '3.14.0'
+	cucumberJvmVersion = '1.2.5'
+	chromeDriverVersion = '73.0.3683.68'
+	geckoDriverVersion = '0.24.0'
 }
 
 repositories {
@@ -44,8 +44,8 @@ dependencies {
 
 	// pick whichever drivers you want. We test against most of them here.
 	// see src/test/resources/GebConfig.groovy for how to switch between them
-	cucumberRuntime "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
-	cucumberRuntime "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+	testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
 }
 
 webdriverBinaries {

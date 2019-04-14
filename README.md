@@ -17,6 +17,11 @@ and Gradle will be downloaded for you.
 
 To run the tests, just run `./gradlew cucumber` on *nix or `gradlew.bat cucumber` on Windows.
 
+The following commands will launch tests browsers as **headless**:
+
+    ./gradlew cucumber -Dgeb.env=firefoxHeadless
+    ./gradlew cucumber -Dgeb.env=chromeHeadless
+
 See the `src/test/resources/GebConfig.groovy` file for how to run the tests with different browsers.
 
 ## Questions and issues
