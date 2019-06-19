@@ -18,7 +18,6 @@ plugins {
 }
 
 ext {
-	groovyVersion = '2.4.16'
 	gebVersion = '+'
 	seleniumVersion = '3.14.0'
 	cucumberJvmVersion = '1.2.5'
@@ -42,7 +41,6 @@ repositories {
 }
 
 dependencies {
-	testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
 	testCompile "org.gebish:geb-core:$gebVersion"
 	testCompile "org.seleniumhq.selenium:selenium-api:$seleniumVersion"
 
